@@ -5,6 +5,7 @@ import Services from "@/components/Services";
 import BeforeAfter from "@/components/BeforeAfter";
 import WhyUs from "@/components/WhyUs";
 import Process from "@/components/Process";
+import Reviews from "@/components/Reviews";
 import BigCTA from "@/components/BigCTA";
 import ContactFooter from "@/components/ContactFooter";
 import WhatsAppButtonSticky from "@/components/WhatsAppButtonSticky";
@@ -20,6 +21,7 @@ export default function Home() {
         <BeforeAfter />
         <WhyUs />
         <Process />
+        <Reviews />
         <BigCTA />
       </main>
       <ContactFooter />
