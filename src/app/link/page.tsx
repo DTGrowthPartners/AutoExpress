@@ -365,12 +365,12 @@ export default function LinkPage() {
           transition={{ duration: 0.6, type: "spring", stiffness: 200, damping: 15 }}
           className="relative"
         >
-          <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-accent/50 shadow-lg shadow-accent/20">
+          <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-accent/50 shadow-lg shadow-accent/20 bg-surface flex items-center justify-center">
             <Image
-              src="/assets/hero/hero.webp"
+              src="/assets/hero/autoexpresslogo-sin-fondo.png"
               alt="Auto Express"
               fill
-              className="object-cover"
+              className="object-contain p-2"
               priority
             />
           </div>
