@@ -62,8 +62,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        {/* TODO: agregar favicon real */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" href="/favicons/favicon-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/favicons/favicon-16x16.png" type="image/png" sizes="16x16" />
+        <link rel="apple-touch-icon" href="/favicons/favicon-180x180.png" />
 
         {/* TODO: integrar Meta Pixel */}
         {/* <script dangerouslySetInnerHTML={{ __html: `

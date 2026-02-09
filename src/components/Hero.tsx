@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MapPin, Headphones, ShieldCheck } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { trackCTA } from "@/lib/track";
+import { FlipWords } from "@/components/ui/flip-words";
 import BlurReveal from "@/components/motion/BlurReveal";
 import FadeIn from "@/components/motion/FadeIn";
 import AnimatedButton from "@/components/motion/AnimatedButton";
@@ -38,10 +39,16 @@ export default function Hero() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight">
               Reparamos, protegemos y{" "}
               <span
-                className="text-accent"
+                className="text-accent inline-flex"
                 style={{ textShadow: "0 0 10px rgba(225,6,0,0.8), 0 0 30px rgba(225,6,0,0.5), 0 0 60px rgba(225,6,0,0.3)" }}
-              >detallamos</span> tu vehículo como se
-              debe
+              >
+                <FlipWords
+                  words={["detallamos", "pintamos", "arreglamos"]}
+                  duration={3000}
+                  className="text-accent"
+                />
+              </span>{" "}
+              tu vehículo como se debe
             </h1>
           </BlurReveal>
 
