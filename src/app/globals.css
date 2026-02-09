@@ -50,6 +50,15 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 
+/* Hide scrollbar but keep scroll functional */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Before/After slider thumb */
 .before-after-slider::-webkit-slider-thumb {
   -webkit-appearance: none;

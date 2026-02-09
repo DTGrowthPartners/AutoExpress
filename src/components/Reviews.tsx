@@ -152,9 +152,9 @@ export default function Reviews() {
         </FadeIn>
 
         {/* Review Cards — horizontal scroll on mobile, grid on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible sm:snap-none sm:pb-0">
           {REVIEWS.map((review, i) => (
-            <FadeIn key={review.name} delay={i * 0.1}>
+            <FadeIn key={review.name} delay={i * 0.1} className="min-w-[280px] sm:min-w-0 snap-start">
               <div className="bg-surface border border-border rounded-card p-6 h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20">
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-3">
