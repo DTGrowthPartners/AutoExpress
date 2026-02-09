@@ -441,12 +441,7 @@ export default function LinkPage() {
         </motion.a>
 
         {/* ── services section ── */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="w-full space-y-3"
-        >
+        <div className="w-full space-y-3">
           {/* collapsible header */}
           <motion.button
             onClick={() => setServicesOpen(!servicesOpen)}
@@ -468,10 +463,22 @@ export default function LinkPage() {
             {servicesOpen && (
               <motion.div
                 key="services"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
+                initial="hidden"
+                animate="visible"
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                variants={{
+                  hidden: { height: 0, opacity: 0 },
+                  visible: {
+                    height: "auto",
+                    opacity: 1,
+                    transition: {
+                      duration: 0.4,
+                      ease: "easeInOut",
+                      staggerChildren: 0.08,
+                      when: "beforeChildren",
+                    },
+                  },
+                }}
                 className="overflow-hidden space-y-3"
               >
                 {SERVICES.map((service) => (
@@ -493,7 +500,7 @@ export default function LinkPage() {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
         {/* ── contact section ── */}
         <motion.div
