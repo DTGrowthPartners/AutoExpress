@@ -8,6 +8,7 @@ import { trackCTA } from "@/lib/track";
 
 const NAV_LINKS = [
   { label: "Servicios", href: "#servicios" },
+  { label: "Opiniones", href: "#opiniones" },
   { label: "Por qué", href: "#por-que" },
   { label: "Proceso", href: "#proceso" },
   { label: "Resultados", href: "#resultados" },
