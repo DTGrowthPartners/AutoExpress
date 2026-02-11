@@ -42,7 +42,7 @@ export default function Header() {
           {/* Logo */}
           <a href="#hero" className="flex-shrink-0">
             <Image
-              src="/assets/brand/Logo_R-removebg-preview.png"
+              src="/assets/brand/logo-autoexpress.png"
               alt="Auto Express Cartagena"
               width={200}
               height={200}
