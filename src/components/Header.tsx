@@ -42,12 +42,12 @@ export default function Header() {
           {/* Logo */}
           <a href="#hero" className="flex-shrink-0">
             <Image
-              src="/assets/hero/autoexpresslogo-sin-fondo.png"
+              src="/assets/brand/Logo_R-removebg-preview.png"
               alt="Auto Express Cartagena"
-              width={160}
-              height={36}
+              width={200}
+              height={200}
               className="w-auto"
-              style={{ width: "auto", height: "80px" }}
+              style={{ width: "auto", height: "200px" }}
               priority
             />
           </a>
