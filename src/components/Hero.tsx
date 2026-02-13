@@ -20,7 +20,7 @@ export default function Hero() {
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-base">
       {/* Background image */}
       <Image
-        src="/assets/hero/hero.webp"
+        src="/assets/hero/hero-bmw-front.png"
         alt="Técnico de Auto Express puliendo un vehículo"
         fill
         className="object-cover"

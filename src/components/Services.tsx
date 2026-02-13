@@ -20,8 +20,8 @@ const SERVICES = [
     title: "Colisión",
     description: "Reparación estructural y de carrocería tras impactos.",
     icon: CarFront,
-    image: "/assets/hero/Colision.png",
-    focus: "center 40%",
+    image: "/assets/hero/colision-taller.png",
+    focus: "center 50%",
     waMessage: "Colisión (reparación de carrocería)",
   },
   {
@@ -29,8 +29,8 @@ const SERVICES = [
     title: "Pintura",
     description: "Pintura parcial o total con acabado de fábrica.",
     icon: Paintbrush,
-    image: "/assets/hero/Pintura.png",
-    focus: "center 60%",
+    image: "/assets/hero/pintura-cabina.png",
+    focus: "center 50%",
     waMessage: "Pintura automotriz",
   },
   {
@@ -38,8 +38,8 @@ const SERVICES = [
     title: "Protecciones",
     description: "PPF, ceramic coating y protección de superficies.",
     icon: Shield,
-    image: "/assets/hero/Protecciones.png",
-    focus: "center 40%",
+    image: "/assets/hero/protecciones-prep.png",
+    focus: "center 50%",
     waMessage: "Protecciones (PPF / Ceramic Coating)",
   },
   {
@@ -56,8 +56,8 @@ const SERVICES = [
     title: "Calidad garantizada",
     description: "Procesos documentados y control de calidad en cada paso.",
     icon: BadgeCheck,
-    image: "/assets/hero/Calidad.png",
-    focus: "center 55%",
+    image: "/assets/hero/calidad-cabina.png",
+    focus: "center 50%",
     waMessage: "Información sobre garantía de calidad",
   },
 ];
