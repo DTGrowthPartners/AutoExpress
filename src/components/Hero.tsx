@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { MapPin, Headphones, ShieldCheck } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { trackCTA } from "@/lib/track";
@@ -18,19 +19,36 @@ const MICRO_TRUST = [
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-base">
-      {/* Background image */}
-      <Image
-        src="/assets/hero/hero-bmw-front.png"
-        alt="Técnico de Auto Express puliendo un vehículo"
-        fill
-        className="object-cover"
-        priority
-        quality={85}
-      />
+      {/* Background image with Ken Burns + fade-in */}
+      <motion.div
+        initial={{ scale: 1.15, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute inset-0"
+      >
+        <Image
+          src="/assets/hero/hero-bmw-front.png"
+          alt="BMW X7 en taller Auto Express Cartagena"
+          fill
+          className="object-cover animate-ken-burns object-[center_70%] sm:object-center"
+          priority
+          quality={85}
+        />
+      </motion.div>
 
       {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.6, delay: 0.3 }}
+        className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.6, delay: 0.3 }}
+        className="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent"
+      />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-32 lg:pb-24 w-full">
