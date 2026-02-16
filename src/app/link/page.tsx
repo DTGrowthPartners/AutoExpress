@@ -365,7 +365,7 @@ export default function LinkPage() {
           transition={{ duration: 0.6, type: "spring", stiffness: 200, damping: 15 }}
           className="relative"
         >
-          <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-accent/50 shadow-lg shadow-accent/20 bg-surface flex items-center justify-center">
+          <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-accent/50 shadow-lg shadow-accent/20 bg-surface flex items-center justify-center">
             <Image
               src="/assets/brand/logo-autoexpress.png"
               alt="Auto Express"
