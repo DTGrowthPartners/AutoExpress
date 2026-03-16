@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
 import { INSURANCE_PARTNERS } from "@/data/insurance";
-import FadeIn from "@/components/motion/FadeIn";
 import SectionHeader from "@/components/shared/SectionHeader";
 
 export default function InsurancePartners() {
