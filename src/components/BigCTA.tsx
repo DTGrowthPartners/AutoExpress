@@ -1,35 +1,42 @@
 "use client";
 
+import Link from "next/link";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { trackCTA } from "@/lib/track";
 import FadeIn from "@/components/motion/FadeIn";
 import AnimatedButton from "@/components/motion/AnimatedButton";
 import StaggerWords from "@/components/motion/StaggerWords";
 
-export default function BigCTA() {
+interface BigCTAProps {
+  heading?: string;
+  highlight?: string;
+  center?: string;
+  showCenterLinks?: boolean;
+}
+
+export default function BigCTA({
+  heading = "¿Tu vehículo necesita reparación o detailing profesional?",
+  highlight = "detailing",
+  center,
+  showCenterLinks = false,
+}: BigCTAProps) {
   return (
-    <section
-      id="cta"
-      className="relative py-20 lg:py-28 overflow-hidden"
-    >
-      {/* Background */}
+    <section className="relative py-20 lg:py-28 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-base via-surface to-base" />
       <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-accent/5" />
-
-      {/* Subtle decorative glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <StaggerWords
-          text="¿Tu vehículo necesita reparación o detailing profesional?"
+          text={heading}
           className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight"
-          highlight="detailing"
+          highlight={highlight}
         />
 
         <FadeIn delay={0.2}>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <AnimatedButton
-              href={getWhatsAppLink()}
+              href={getWhatsAppLink({ center })}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackCTA("whatsapp_big_cta")}
@@ -42,6 +49,25 @@ export default function BigCTA() {
             </AnimatedButton>
           </div>
         </FadeIn>
+
+        {showCenterLinks && (
+          <FadeIn delay={0.3}>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/colision"
+                className="text-sm font-medium text-text-secondary hover:text-white transition-colors"
+              >
+                Ir al Centro de Colisión →
+              </Link>
+              <Link
+                href="/detallado"
+                className="text-sm font-medium text-text-secondary hover:text-white transition-colors"
+              >
+                Ir al Centro de Detallado →
+              </Link>
+            </div>
+          </FadeIn>
+        )}
 
         <FadeIn delay={0.35}>
           <p className="mt-5 text-sm text-muted">

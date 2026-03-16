@@ -1,12 +1,13 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { MessageCircle, Camera, Wrench, PackageCheck } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { trackCTA } from "@/lib/track";
-import FadeIn from "@/components/motion/FadeIn";
 import AnimatedButton from "@/components/motion/AnimatedButton";
 import StaggerWords from "@/components/motion/StaggerWords";
 import AccentLine from "@/components/motion/AccentLine";
+import FadeIn from "@/components/motion/FadeIn";
 
 const STEPS = [
   {
@@ -37,8 +38,25 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <section id="proceso" className="py-20 lg:py-28 bg-surface/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="proceso" className="relative py-20 lg:py-28 overflow-hidden">
+      {/* Elevated background */}
+      <div className="absolute inset-0 bg-[#0d0f14]" />
+
+      {/* Top/bottom accent edges */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+
+      {/* Floating orbs */}
+      <div
+        className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/[0.05] blur-[120px] pointer-events-none"
+        style={{ animation: "float-orb 20s ease-in-out infinite" }}
+      />
+      <div
+        className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-white/[0.02] blur-[100px] pointer-events-none"
+        style={{ animation: "float-orb-reverse 16s ease-in-out infinite" }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
           <StaggerWords
@@ -48,27 +66,60 @@ export default function Process() {
           <AccentLine />
         </div>
 
-        {/* Steps — staggered FadeIn */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STEPS.map((step, i) => (
-            <FadeIn key={step.number} delay={i * 0.15}>
-              <div className="relative bg-surface border border-border rounded-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 h-full">
-                {/* Number */}
-                <span className="text-3xl font-extrabold text-accent/40">
-                  {step.number}
-                </span>
+        {/* Steps with animated connecting line (desktop) */}
+        <div className="relative">
+          {/* Connecting line (desktop only) */}
+          <motion.div
+            className="hidden lg:block absolute top-[88px] left-[12.5%] right-[12.5%] h-px"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+            style={{
+              background: "linear-gradient(90deg, transparent, #E10600, #E10600, transparent)",
+              transformOrigin: "left",
+            }}
+          />
 
-                <div className="mt-3 flex items-center justify-center w-12 h-12 rounded-full bg-accent/10">
-                  <step.icon size={22} className="text-accent" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
+                whileHover={{ y: -6 }}
+                className="group relative"
+              >
+                <div className="relative bg-surface border border-border rounded-card p-6 h-full transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:border-accent/20">
+                  {/* Animated number */}
+                  <motion.span
+                    className="text-4xl font-extrabold block"
+                    style={{ color: "rgba(225,6,0,0.25)" }}
+                    whileInView={{ opacity: [0, 1] }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + i * 0.15 }}
+                  >
+                    {step.number}
+                  </motion.span>
+
+                  {/* Icon with hover scale */}
+                  <div className="mt-3 flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300 relative z-10">
+                    <step.icon size={22} style={{ color: "#E10600" }} />
+                  </div>
+
+                  <h3 className="mt-4 text-base font-semibold text-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.72)" }}>
+                    {step.description}
+                  </p>
+
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 rounded-card bg-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </div>
-
-                <h3 className="mt-4 text-base font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm text-white/80 leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* CTA */}

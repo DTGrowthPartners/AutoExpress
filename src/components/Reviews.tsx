@@ -99,8 +99,22 @@ function GoogleStars({ rating }: { rating: number }) {
 
 export default function Reviews() {
   return (
-    <section id="opiniones" className="py-20 lg:py-28 bg-base">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="opiniones" className="relative py-20 lg:py-28 bg-base overflow-hidden">
+      {/* Animated background orbs */}
+      <div
+        className="absolute -top-20 -left-20 w-[400px] h-[400px] rounded-full bg-accent/[0.07] blur-[100px] pointer-events-none"
+        style={{ animation: "float-orb 18s ease-in-out infinite" }}
+      />
+      <div
+        className="absolute -bottom-20 -right-20 w-[350px] h-[350px] rounded-full bg-blue-500/[0.05] blur-[100px] pointer-events-none"
+        style={{ animation: "float-orb-reverse 22s ease-in-out infinite" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/[0.03] blur-[120px] pointer-events-none"
+        style={{ animation: "pulse-glow 8s ease-in-out infinite" }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
           <StaggerWords

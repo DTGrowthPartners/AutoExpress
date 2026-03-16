@@ -1,0 +1,19 @@
+import MainLayout from "@/components/layout/MainLayout";
+import CentroHero from "@/components/centro/CentroHero";
+import ServiceGrid from "@/components/centro/ServiceGrid";
+import WhyUs from "@/components/WhyUs";
+import FAQAccordion from "@/components/centro/FAQAccordion";
+import CenterCTA from "@/components/centro/CenterCTA";
+import { CENTERS } from "@/data/centers";
+
+export default function DetalladoPage() {
+  return (
+    <MainLayout activeCenter="detallado">
+      <CentroHero center={CENTERS.detallado} />
+      <ServiceGrid center="detallado" />
+      <WhyUs />
+      <FAQAccordion center="detallado" />
+      <CenterCTA center={CENTERS.detallado} otherCenter={CENTERS.colision} />
+    </MainLayout>
+  );
+}

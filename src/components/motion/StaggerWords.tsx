@@ -49,7 +49,7 @@ export default function StaggerWords({
             className={`inline-block mr-[0.25em] ${
               highlight && w.toLowerCase().includes(highlight.toLowerCase())
                 ? "text-accent"
-                : ""
+                : "text-white"
             }`}
           >
             {w}

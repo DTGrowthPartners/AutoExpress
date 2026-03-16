@@ -2,9 +2,9 @@
 
 import { useState, useCallback } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import FadeIn from "@/components/motion/FadeIn";
-import StaggerWords from "@/components/motion/StaggerWords";
-import AccentLine from "@/components/motion/AccentLine";
+import SectionHeader from "@/components/shared/SectionHeader";
 
 interface ComparisonItem {
   title: string;
@@ -45,7 +45,7 @@ function ComparisonSlider({ item }: { item: ComparisonItem }) {
   );
 
   return (
-    <div className="bg-surface border border-border rounded-card overflow-hidden">
+    <div className="group bg-surface border border-border rounded-card overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:border-white/15">
       <div className="relative aspect-[4/3] overflow-hidden select-none bg-black">
         {/* After image (full background) */}
         <Image
@@ -81,7 +81,6 @@ function ComparisonSlider({ item }: { item: ComparisonItem }) {
               height="16"
               viewBox="0 0 16 16"
               fill="none"
-              className="text-base"
             >
               <path
                 d="M4 8L1 8M1 8L3 6M1 8L3 10M12 8L15 8M15 8L13 6M15 8L13 10"
@@ -115,8 +114,8 @@ function ComparisonSlider({ item }: { item: ComparisonItem }) {
       </div>
 
       <div className="p-4">
-        <h3 className="text-sm font-semibold">{item.title}</h3>
-        <p className="text-xs text-muted mt-1">{item.context}</p>
+        <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+        <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.52)" }}>{item.context}</p>
       </div>
     </div>
   );
@@ -124,28 +123,35 @@ function ComparisonSlider({ item }: { item: ComparisonItem }) {
 
 export default function BeforeAfter() {
   return (
-    <section id="resultados" className="py-20 lg:py-28 bg-surface/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-14">
-          <StaggerWords
-            text="Antes / Después"
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold"
-          />
-          <AccentLine />
-          <FadeIn delay={0.3}>
-            <p className="mt-4 text-text-secondary text-base max-w-md mx-auto">
-              No prometemos milagros. Mostramos <span className="text-white font-semibold">resultados</span>.
-            </p>
-          </FadeIn>
-        </div>
+    <section id="resultados" className="relative py-20 lg:py-28 overflow-hidden">
+      {/* Slightly different background */}
+      <div className="absolute inset-0 bg-surface/30" />
+
+      {/* Floating orb */}
+      <div
+        className="absolute top-20 -right-10 w-[350px] h-[350px] rounded-full bg-accent/[0.04] blur-[100px] pointer-events-none"
+        style={{ animation: "float-orb 18s ease-in-out infinite" }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          title="Antes / Después"
+          subtitle="No prometemos milagros. Mostramos resultados."
+          highlight="resultados"
+        />
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {COMPARISONS.map((item, i) => (
-            <FadeIn key={item.title} delay={i * 0.1}>
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ delay: i * 0.12, duration: 0.5, ease: "easeOut" }}
+            >
               <ComparisonSlider item={item} />
-            </FadeIn>
+            </motion.div>
           ))}
         </div>
       </div>

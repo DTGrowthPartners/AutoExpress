@@ -73,6 +73,59 @@ body {
   animation: ken-burns 20s ease-in-out alternate infinite;
 }
 
+/* Animated background orbs */
+@keyframes float-orb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(40px, 30px) scale(1.05);
+  }
+}
+
+@keyframes float-orb-reverse {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-40px, 30px) scale(1.05);
+  }
+  50% {
+    transform: translate(30px, -20px) scale(0.9);
+  }
+  75% {
+    transform: translate(-20px, -40px) scale(1.1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes drift-slow {
+  0% {
+    transform: translateX(0%) translateY(0%);
+  }
+  50% {
+    transform: translateX(3%) translateY(-2%);
+  }
+  100% {
+    transform: translateX(0%) translateY(0%);
+  }
+}
+
+
 /* Before/After slider thumb */
 .before-after-slider::-webkit-slider-thumb {
   -webkit-appearance: none;

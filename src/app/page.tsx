@@ -1,31 +1,29 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import MainLayout from "@/components/layout/MainLayout";
+import HomeHero from "@/components/home/HomeHero";
 import SocialProof from "@/components/SocialProof";
-import Services from "@/components/Services";
-import BeforeAfter from "@/components/BeforeAfter";
-import WhyUs from "@/components/WhyUs";
-import Process from "@/components/Process";
+import CentroSwitcher from "@/components/home/CentroSwitcher";
+import PromiseSection from "@/components/home/PromiseSection";
 import Reviews from "@/components/Reviews";
+import HomeFAQLinks from "@/components/home/HomeFAQLinks";
 import BigCTA from "@/components/BigCTA";
-import ContactFooter from "@/components/ContactFooter";
-import WhatsAppButtonSticky from "@/components/WhatsAppButtonSticky";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Auto Express Cartagena | Centro de Colisión & Detallado Automotriz",
+  description:
+    "Dos centros especializados en Cartagena: Centro de Colisión y Centro de Detallado Automotriz. Reparación, pintura, protección y embellecimiento profesional.",
+};
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <SocialProof />
-        <Services />
-        <BeforeAfter />
-        <WhyUs />
-        <Process />
-        <Reviews />
-        <BigCTA />
-      </main>
-      <ContactFooter />
-      <WhatsAppButtonSticky />
-    </>
+    <MainLayout>
+      <HomeHero />
+      <SocialProof />
+      <CentroSwitcher />
+      <PromiseSection />
+      <Reviews />
+      <HomeFAQLinks />
+      <BigCTA showCenterLinks />
+    </MainLayout>
   );
 }
